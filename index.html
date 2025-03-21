@@ -186,7 +186,10 @@ function rayColour(ray)
 {
     let castResult = traceRay(ray)
     if(castResult.t < 0) return backgroundColour(ray)
-    else return castResult.normal
+
+    let diffuse = Math.max(castResult.normal.dot(negLightDirection),0)
+    let colour = new Vec3(diffuse,diffuse,diffuse);
+    return colour
 }
 
 // Sets a pixel at (x, y) in the canvas with an RGB Vec3
