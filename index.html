@@ -186,7 +186,7 @@ function rayColour(ray)
 {
     let castResult = traceRay(ray)
     if(castResult.t < 0) return backgroundColour(ray)
-    else return new Vec3(1,0,0)
+    else return castResult.normal
 }
 
 // Sets a pixel at (x, y) in the canvas with an RGB Vec3
