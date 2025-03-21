@@ -187,8 +187,9 @@ function rayColour(ray)
     let castResult = traceRay(ray)
     if(castResult.t < 0) return backgroundColour(ray)
 
+    let albedo = spheres[castResult.sphereIndex].colour
     let diffuse = Math.max(castResult.normal.dot(negLightDirection),0)
-    let colour = new Vec3(diffuse,diffuse,diffuse);
+    let colour = albedo.scale(diffuse)
     return colour
 }
 
